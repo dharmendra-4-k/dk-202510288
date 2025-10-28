@@ -1,0 +1,286 @@
+{
+	"name": "ds_sql_src_general",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServerDev",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"DBName": {
+				"type": "String"
+			},
+			"SchemaName": {
+				"type": "String"
+			},
+			"TableName": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Emp_Code",
+				"type": "varchar"
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Role",
+				"type": "varchar"
+			},
+			{
+				"name": "Role_Band",
+				"type": "varchar"
+			},
+			{
+				"name": "Designation",
+				"type": "varchar"
+			},
+			{
+				"name": "RPMS_Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Start_Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "End_Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Emp_Practice",
+				"type": "varchar"
+			},
+			{
+				"name": "Emp_Group_Practice",
+				"type": "varchar"
+			},
+			{
+				"name": "Employee_Horizontal",
+				"type": "varchar"
+			},
+			{
+				"name": "Trainee_Category",
+				"type": "varchar"
+			},
+			{
+				"name": "Skill_Category",
+				"type": "varchar"
+			},
+			{
+				"name": "Primary_Skill",
+				"type": "varchar"
+			},
+			{
+				"name": "Secondary_Skill",
+				"type": "varchar"
+			},
+			{
+				"name": "Total_Experience",
+				"type": "decimal",
+				"precision": 16,
+				"scale": 2
+			},
+			{
+				"name": "Overseas_Mobility",
+				"type": "varchar"
+			},
+			{
+				"name": "Domestic_Mobility",
+				"type": "varchar"
+			},
+			{
+				"name": "Onsite_Offshore",
+				"type": "varchar"
+			},
+			{
+				"name": "Pool_Start_Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Contact_No",
+				"type": "varchar"
+			},
+			{
+				"name": "Project_released_from",
+				"type": "varchar"
+			},
+			{
+				"name": "Visa_Details",
+				"type": "varchar"
+			},
+			{
+				"name": "Gender",
+				"type": "varchar"
+			},
+			{
+				"name": "E-mail_id",
+				"type": "varchar"
+			},
+			{
+				"name": "DIS",
+				"type": "varchar"
+			},
+			{
+				"name": "Supervisor_EmpCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Supervisor_EmpName",
+				"type": "varchar"
+			},
+			{
+				"name": "Current_Opportunity",
+				"type": "varchar"
+			},
+			{
+				"name": "No_Of_Opportunities_tagged",
+				"type": "varchar"
+			},
+			{
+				"name": "No_Of_Opportunities_rejected",
+				"type": "varchar"
+			},
+			{
+				"name": "No_of_Days_in_RP",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Ageing",
+				"type": "varchar"
+			},
+			{
+				"name": "Ageing_Days",
+				"type": "varchar"
+			},
+			{
+				"name": "Ageing_Month_Range",
+				"type": "varchar"
+			},
+			{
+				"name": "Emp_Status",
+				"type": "varchar"
+			},
+			{
+				"name": "Emp_Grp",
+				"type": "varchar"
+			},
+			{
+				"name": "OU",
+				"type": "varchar"
+			},
+			{
+				"name": "OU_Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "PA_Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "PSA",
+				"type": "varchar"
+			},
+			{
+				"name": "PSA_Desc",
+				"type": "varchar"
+			},
+			{
+				"name": "IPMS_WBS_CustName",
+				"type": "varchar"
+			},
+			{
+				"name": "Base_EmpCode",
+				"type": "char"
+			},
+			{
+				"name": "Career_Manager_EmpCode",
+				"type": "varchar"
+			},
+			{
+				"name": "Career_Manager_EmpName",
+				"type": "varchar"
+			},
+			{
+				"name": "DOJ",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Current_RR",
+				"type": "varchar"
+			},
+			{
+				"name": "Current_RR_Project",
+				"type": "varchar"
+			},
+			{
+				"name": "Current_RR_Tagged_Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "CV_Tagged_By",
+				"type": "varchar"
+			},
+			{
+				"name": "CV_Finalised_Date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Data_Updated_Yet",
+				"type": "char"
+			},
+			{
+				"name": "CV_UploadStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "CV_Tagged_Ageing",
+				"type": "varchar"
+			},
+			{
+				"name": "CV_finalised_Ageing",
+				"type": "varchar"
+			},
+			{
+				"name": "Remarks",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LWD",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Referred_to_HR_onDate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Deployed_VDU",
+				"type": "varchar"
+			},
+			{
+				"name": "Released_Vertical",
+				"type": "varchar"
+			},
+			{
+				"name": "CV_Tagged_Vertical",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().SchemaName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

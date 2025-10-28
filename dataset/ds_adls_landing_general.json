@@ -1,0 +1,52 @@
+{
+	"name": "ds_adls_landing_general",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLSGen2",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ADLSlanding1": {
+				"type": "String"
+			},
+			"ADLSLanding2": {
+				"type": "String"
+			},
+			"ADLSLanding3": {
+				"type": "String"
+			},
+			"Delimter": {
+				"type": "String",
+				"defaultValue": ",|"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().ADLSLanding3",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().ADLSLanding2",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().ADLSlanding1",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": {
+				"value": "@dataset().Delimter",
+				"type": "Expression"
+			},
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

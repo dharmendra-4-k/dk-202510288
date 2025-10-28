@@ -1,0 +1,1100 @@
+{
+	"name": "dp_attendance_sql_server_adls_landing",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy_sql_src_adls_lz_dws",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [EmpCode]\n      ,[Name]\n      ,[RecordDate]\n      ,[DayType]\n      ,[RecordType]\n      ,[OU]\n      ,[OUDesc]\n      ,[PA]\n      ,[PADesc]\n      ,[PSA]\n      ,[PSADesc]\n      ,[CompanyCode]\n      ,[CompanyDesc]\n      ,[ProjectCode]\n      ,[ProjectDesc]\n      ,[VERTICAL_BU]\n      ,[VERTICAL_DU]\n      ,[COSTGRP]\n      ,[CUSTOMER_GRP]\n      ,[Supervisor]\n      ,[Role]\n      ,[BAND]\n      ,[DIS]\n      ,[EmpPracticeCode]\n      ,[EmpPracticeDesc]\n      ,[EmpGroupPractice]\n      ,[HORIZONTAL]\n      ,[AccessCardWorkingHours]\n      ,[Status]\n      ,[IsExemption]\n      ,[ExemptionReason]\n      ,[Location]\n      ,[BHREmpCode]\n      ,[BHRNAME]\n       ,[UploadedByCode]\n      ,[UploadedByName]\n      ,[UploadedOn]\n      ,[AccessCardLocation]\n  FROM [dbo].[vw_wfo_DateWiseEmployeeData]\n  where RecordDate >='2025-04-01'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"parallelCopies": 32,
+					"dataIntegrationUnits": 32,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "EmpCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordDate",
+									"type": "DateTime",
+									"physicalType": "date"
+								},
+								"sink": {
+									"name": "RecordDate",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DayType",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "DayType",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RecordType",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "RecordType",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "OU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OUDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "OUDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PA",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PADesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PADesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PSA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PSA",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PSADesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PSADesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CompanyCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CompanyDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ProjectDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VERTICAL_BU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VERTICAL_BU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VERTICAL_DU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VERTICAL_DU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COSTGRP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "COSTGRP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_GRP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CUSTOMER_GRP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Supervisor",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Supervisor",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Role",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Role",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BAND",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "BAND",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIS",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "DIS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpPracticeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpPracticeCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpPracticeDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpPracticeDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpGroupPractice",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpGroupPractice",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "HORIZONTAL",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "HORIZONTAL",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccessCardWorkingHours",
+									"type": "TimeSpan",
+									"physicalType": "time"
+								},
+								"sink": {
+									"name": "AccessCardWorkingHours",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Status",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "IsExemption",
+									"type": "String",
+									"physicalType": "char"
+								},
+								"sink": {
+									"name": "IsExemption",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExemptionReason",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ExemptionReason",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Location",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Location",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BHREmpCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "BHREmpCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BHRNAME",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "BHRNAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UploadedByCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "UploadedByCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UploadedByName",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "UploadedByName",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "UploadedOn",
+									"type": "DateTime",
+									"physicalType": "datetime"
+								},
+								"sink": {
+									"name": "UploadedOn",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccessCardLocation",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "AccessCardLocation",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sql_src_general",
+						"type": "DatasetReference",
+						"parameters": {
+							"DBName": {
+								"value": "@pipeline().parameters.DWSSourceDB",
+								"type": "Expression"
+							},
+							"SchemaName": {
+								"value": "@pipeline().parameters.DWSSchemaName",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@pipeline().parameters.DWSTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adls_landing_general",
+						"type": "DatasetReference",
+						"parameters": {
+							"ADLSlanding1": {
+								"value": "@pipeline().parameters.ADLSLand1",
+								"type": "Expression"
+							},
+							"ADLSLanding2": {
+								"value": "@pipeline().parameters.ADLSLand2",
+								"type": "Expression"
+							},
+							"ADLSLanding3": {
+								"value": "@concat('attendance_daily_',formatDateTime(utcnow(), 'yyyy-MM-dd'))",
+								"type": "Expression"
+							},
+							"Delimter": ",|"
+						}
+					}
+				]
+			},
+			{
+				"name": "copy_sql_src_adls_lz_ews",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT [EmpCode]\r\n      ,[NAME]\r\n      ,[MonthYear]\r\n      ,[TotalDays]\r\n      ,[WorkingDays]\r\n      ,[OfficeDays]\r\n      ,[LeaveDays]\r\n      ,[ExceptionDays]\r\n      ,[TravelDays]\r\n      ,[OU]\r\n      ,[OUDesc]\r\n      ,[PA]\r\n      ,[PADesc]\r\n      ,[PSA]\r\n      ,[PSADesc]\r\n      ,[CompanyCode]\r\n      ,[CompanyDesc]\r\n      ,[ProjectCode]\r\n      ,[ProjectDesc]\r\n      ,[VERTICAL_BU]\r\n      ,[VERTICAL_DU]\r\n      ,[COSTGRP]\r\n      ,[CUSTOMER_GRP]\r\n      ,[Supervisor]\r\n      ,[Role]\r\n      ,[BAND]\r\n      ,[DIS]\r\n      ,[EmpPracticeCode]\r\n      ,[EmpPracticeDesc]\r\n      ,[EmpGroupPractice]\r\n      ,[Horizontal]\r\n      ,[AccessCardWorkingHours]\r\n      ,[Location]\r\n      ,[BHREmpCode]\r\n      ,[BHRNAME]\r\n  FROM [dbo].[vw_wfo_EmployeeWiseSummary]\r\n  where MonthYear >=  '202504'",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"parallelCopies": 32,
+					"dataIntegrationUnits": 32,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "EmpCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "NAME",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "NAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "MonthYear",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "MonthYear",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TotalDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TotalDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "WorkingDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "WorkingDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OfficeDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "OfficeDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LeaveDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "LeaveDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ExceptionDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "ExceptionDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "TravelDays",
+									"type": "Int32",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "TravelDays",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "OU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "OUDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "OUDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PA",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PADesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PADesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PSA",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PSA",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "PSADesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "PSADesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CompanyCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CompanyDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CompanyDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ProjectCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "ProjectDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "ProjectDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VERTICAL_BU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VERTICAL_BU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VERTICAL_DU",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "VERTICAL_DU",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "COSTGRP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "COSTGRP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "CUSTOMER_GRP",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "CUSTOMER_GRP",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Supervisor",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Supervisor",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Role",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Role",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BAND",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "BAND",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "DIS",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "DIS",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpPracticeCode",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpPracticeCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpPracticeDesc",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpPracticeDesc",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "EmpGroupPractice",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "EmpGroupPractice",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Horizontal",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Horizontal",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "AccessCardWorkingHours",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "AccessCardWorkingHours",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Location",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "Location",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BHREmpCode",
+									"type": "String",
+									"physicalType": "char"
+								},
+								"sink": {
+									"name": "BHREmpCode",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BHRNAME",
+									"type": "String",
+									"physicalType": "varchar"
+								},
+								"sink": {
+									"name": "BHRNAME",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_sql_src_general",
+						"type": "DatasetReference",
+						"parameters": {
+							"DBName": {
+								"value": "@pipeline().parameters.EWSDBName",
+								"type": "Expression"
+							},
+							"SchemaName": {
+								"value": "@pipeline().parameters.EWSSchemaName",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@pipeline().parameters.EWSTableName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_adls_landing_general",
+						"type": "DatasetReference",
+						"parameters": {
+							"ADLSlanding1": {
+								"value": "@pipeline().parameters.EWSADLSLand1",
+								"type": "Expression"
+							},
+							"ADLSLanding2": {
+								"value": "@pipeline().parameters.EWSADLSLand2",
+								"type": "Expression"
+							},
+							"ADLSLanding3": {
+								"value": "@concat('attendance_monthly_',formatDateTime(utcnow(), 'yyyy-MM-dd'))",
+								"type": "Expression"
+							},
+							"Delimter": ",|"
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"DWSSourceDB": {
+				"type": "String",
+				"defaultValue": "ntlniitess"
+			},
+			"DWSSchemaName": {
+				"type": "String",
+				"defaultValue": "dbo"
+			},
+			"DWSTableName": {
+				"type": "String",
+				"defaultValue": "vw_wfo_DateWiseEmployeeData"
+			},
+			"EWSDBName": {
+				"type": "String",
+				"defaultValue": "ntlniitess"
+			},
+			"EWSSchemaName": {
+				"type": "String",
+				"defaultValue": "dbo"
+			},
+			"EWSTableName": {
+				"type": "String",
+				"defaultValue": "vw_wfo_EmployeeWiseSummary"
+			},
+			"ADLSLand1": {
+				"type": "String",
+				"defaultValue": "mis-landing"
+			},
+			"ADLSLand2": {
+				"type": "String",
+				"defaultValue": "Current/AttendanceDaily"
+			},
+			"EWSADLSLand1": {
+				"type": "String",
+				"defaultValue": "mis-landing"
+			},
+			"EWSADLSLand2": {
+				"type": "String",
+				"defaultValue": "Current/AttendanceMonthly"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-10-27T12:11:57Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

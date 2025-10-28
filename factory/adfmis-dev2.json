@@ -1,0 +1,9 @@
+{
+	"name": "adfmis-dev2",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "39df1a42-a5e3-4ba2-bde1-30373cdfa161",
+		"tenantId": "b727a530-a0d5-4fb8-bd40-d8f9763e97db"
+	}
+}

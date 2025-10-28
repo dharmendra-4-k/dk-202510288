@@ -1,0 +1,10 @@
+{
+	"name": "AzurePostgreSQLPvtEndPoint-Dev2",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/4a3f0684-9e0a-4093-9e85-fc8d68a929d3/resourceGroups/RG_MIS_DEV2/providers/Microsoft.DBforPostgreSQL/servers/misdev2postgresdb",
+		"groupId": "postgresqlServer",
+		"fqdns": [
+			"misdev2postgresdb.postgres.database.azure.com"
+		]
+	}
+}

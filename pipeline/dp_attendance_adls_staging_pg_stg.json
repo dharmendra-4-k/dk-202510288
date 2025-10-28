@@ -1,0 +1,143 @@
+{
+	"name": "dp_attendance_adls_staging_pg_stg",
+	"properties": {
+		"activities": [
+			{
+				"name": "dp_attendance_adls_staging_pg_stg",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "df_attendance_adls_staging_pg_stg",
+						"type": "DataFlowReference",
+						"parameters": {
+							"parameter1": "currentTimestamp()"
+						},
+						"datasetParameters": {
+							"SourceDWS": {
+								"ADLSlanding1": {
+									"value": "@pipeline().parameters.DWSADLSLand1",
+									"type": "Expression"
+								},
+								"ADLSLanding2": {
+									"value": "@pipeline().parameters.DWSADLSLand2",
+									"type": "Expression"
+								},
+								"ADLSLanding3": {
+									"value": "@concat('attendance_daily_',formatDateTime(utcnow(),'yyyy-MM-dd'))",
+									"type": "Expression"
+								},
+								"Delimter": ",|"
+							},
+							"SourceEWS": {
+								"ADLSlanding1": {
+									"value": "@pipeline().parameters.EWSADLSLand1",
+									"type": "Expression"
+								},
+								"ADLSLanding2": {
+									"value": "@pipeline().parameters.EWSADLSLand2",
+									"type": "Expression"
+								},
+								"ADLSLanding3": {
+									"value": "@concat('attendance_monthly_',formatDateTime(utcnow(), 'yyyy-MM-dd'))",
+									"type": "Expression"
+								},
+								"Delimter": ",|"
+							},
+							"SinkDWS": {
+								"SchemaName": {
+									"value": "@pipeline().parameters.DWSSchemaName",
+									"type": "Expression"
+								},
+								"TableName": "@pipeline().parameters.DWSTableName"
+							},
+							"SinkEWS": {
+								"SchemaName": {
+									"value": "@pipeline().parameters.EWSSchemaName",
+									"type": "Expression"
+								},
+								"TableName": {
+									"value": "@pipeline().parameters.EWSTableName",
+									"type": "Expression"
+								}
+							}
+						},
+						"linkedServiceParameters": {
+							"SinkDWS": {
+								"schemaLinkedService": {
+									"SchemaName": "@pipeline().parameters.DWSSchemaName",
+									"TableName": {
+										"value": "@pipeline().parameters.DWSTableName",
+										"type": "Expression"
+									}
+								}
+							},
+							"SinkEWS": {
+								"schemaLinkedService": {
+									"SchemaName": {
+										"value": "@pipeline().parameters.EWSSchemaName",
+										"type": "Expression"
+									},
+									"TableName": {
+										"value": "@pipeline().parameters.EWSTableName",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"DWSADLSLand1": {
+				"type": "String",
+				"defaultValue": "mis-landing"
+			},
+			"DWSADLSLand2": {
+				"type": "String",
+				"defaultValue": "Current/AttendanceDaily"
+			},
+			"EWSADLSLand1": {
+				"type": "String",
+				"defaultValue": "mis-landing"
+			},
+			"EWSADLSLand2": {
+				"type": "String",
+				"defaultValue": "Current/AttendanceMonthly"
+			},
+			"DWSSchemaName": {
+				"type": "String",
+				"defaultValue": "target"
+			},
+			"DWSTableName": {
+				"type": "String",
+				"defaultValue": "t_attendance_daily"
+			},
+			"EWSSchemaName": {
+				"type": "String",
+				"defaultValue": "target"
+			},
+			"EWSTableName": {
+				"type": "String",
+				"defaultValue": "t_attendance_monthly"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-10-27T12:11:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

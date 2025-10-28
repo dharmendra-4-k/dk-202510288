@@ -1,0 +1,49 @@
+{
+	"name": "dp_attendance_master_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "dp_attendance_sql_srv_adls_lz",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "dp_attendance_sql_server_adls_landing",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "dp_attendance_adls_pgstg",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "dp_attendance_sql_srv_adls_lz",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "dp_attendance_adls_staging_pg_stg",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-10-27T12:11:58Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

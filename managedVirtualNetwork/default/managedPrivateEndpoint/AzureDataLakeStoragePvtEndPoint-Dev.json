@@ -1,0 +1,10 @@
+{
+	"name": "AzureDataLakeStoragePvtEndPoint-Dev",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/4a3f0684-9e0a-4093-9e85-fc8d68a929d3/resourceGroups/RG_MIS_DEV2/providers/Microsoft.Storage/storageAccounts/adlsgen2misdev2",
+		"groupId": "dfs",
+		"fqdns": [
+			"adlsgen2misdev2.dfs.core.windows.net"
+		]
+	}
+}
